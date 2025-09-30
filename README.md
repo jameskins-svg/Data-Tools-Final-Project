@@ -30,7 +30,7 @@ After you're finished please remove all the comments and instructions!
   <img width="314" height="285" alt="image" src="https://github.com/user-attachments/assets/20661293-a214-4004-9042-657102fb0710" />
   <br/>
 
-  <h3><b>Joy's ReadME Template</b></h3>
+  <h3><b>James's ReadME Template</b></h3>
 
 </div>
 
