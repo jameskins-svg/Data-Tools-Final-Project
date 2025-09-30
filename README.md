@@ -106,6 +106,10 @@ After you're finished please remove all the comments and instructions!
 > Describe how a new developer could make use of your project.
 
 To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+In order to run this project you need:
 ### Setup
 
 Clone this repository to your desired folder:
@@ -118,10 +122,6 @@ Example commands:
   git clone git@github.com:myaccount/my-project.git
 ```
 --->
-
-### Prerequisites
-
-In order to run this project you need:
 
 ### Run tests
 
