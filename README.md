@@ -168,18 +168,19 @@ INSERT INTO Treatments (treatment_id, appointment_id, treatment_description, tre
 
 ```
 
-- The Tables should look like this in Supabase:
-authors
-<img width="1893" height="476" alt="image" src="https://github.com/user-attachments/assets/9a89f3ae-77d1-4ed2-a5c5-140db1e7e27b" />
+- The Tables look like this in Supabase:
 
-books:
-<img width="1881" height="445" alt="image" src="https://github.com/user-attachments/assets/d741319f-a0ff-416c-b50f-34c315c9af24" />
+Patients:
+<img width="1920" height="905" alt="image" src="https://github.com/user-attachments/assets/f90960cc-c47c-4e9c-b4ba-0b6553497783" />
 
-customers:
-<img width="1881" height="505" alt="image" src="https://github.com/user-attachments/assets/354752e6-fa32-4aa8-a28f-bf99f98039f2" />
+Doctors:
+<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/2827c35b-ec59-4631-85e0-13aa35a55464" />
 
-orders:
-<img width="1902" height="517" alt="image" src="https://github.com/user-attachments/assets/fe99a68a-8950-4d87-82c1-25dcd3217a65" />
+Appointments:
+<img width="1920" height="896" alt="image" src="https://github.com/user-attachments/assets/36e47500-fb0f-47b7-b5d9-71fa18488165" />
+
+Treatments:
+<img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/c3741e19-4990-4265-8b18-2e5be89b0019" />
 
 - The ERD screenshot from Supabase looks like this: 
 <img width="1064" height="577" alt="image" src="https://github.com/user-attachments/assets/4b8a39b1-ff20-4bd3-be6f-f662b35ae49f" />
