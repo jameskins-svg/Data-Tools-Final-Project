@@ -183,7 +183,8 @@ Treatments:
 <img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/c3741e19-4990-4265-8b18-2e5be89b0019" />
 
 - The ERD screenshot from Supabase looks like this: 
-<img width="1918" height="891" alt="image" src="https://github.com/user-attachments/assets/99718701-55ff-43e5-a266-ed27872ef9c7" />
+<img width="1125" height="677" alt="image" src="https://github.com/user-attachments/assets/1dc5f3ba-65ef-4b64-bdd6-7bc87284c1ff" />
+
 
 - To test the table, I used two queries: 
 
@@ -228,9 +229,7 @@ WHERE appointment_status = 'Completed';
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
+[https://github.com/jameskins-svg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
