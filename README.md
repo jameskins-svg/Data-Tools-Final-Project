@@ -32,21 +32,24 @@
 
 # 📖 My SQL Project <a name="about-project"></a>
 
-**My Hospital SQL Project** is a simple Database that uses SQL, Postgres via Supabase and R to create, query and secure a **Hospital** database.
+**Hospital SQL Project** 
+A demo hospital database built with PostgreSQL (Supabase).  
+This repo contains the schema (tables + sample data) used to practice database fundamentals, relationships and SQL queries.
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
-- SQL
+- SQL (Postgres Supabase)
 - Postgres DB
 
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
 
-- [ ] **Tables**
-- [ ] **Schema**
-- [ ] **Access control**
+- Tables for Patients, Doctors, Appointments and Treatments
+- Sample data (10 rows per table)
+- Foreign key relationships (Appointments → Patients, Doctors; Treatments → Appointments)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -59,15 +62,14 @@ To rebuild this DB, follow these steps.
 ### Prerequisites
 
 To run this project, you need:
-- [A Supabase account](https://supabase.com/)
-- [Knowledge on SQL](https://www.w3schools.com/sql/)
-- A schema for creating your tables in the DB
+- A Supabase account: https://supabase.com/
+- Basic SQL knowledge
 
 
 ### DB Schema
 
 - The DB is made up of 4 tables.
-- To create the table, you will need a schema as shown below:
+- Paste the SQL below into the **SQL editor** in your Supabase project and run it.
 ```sql
 -- Create Patients table
 CREATE TABLE Patients (
@@ -216,8 +218,9 @@ WHERE appointment_status = 'Completed';
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add security**
-- [ ] **Link DB to R for visualisation purposes and further analyses**
+- Add security (RLS / Supabase Auth)
+- Link DB to R for visualizations and analysis
+- Add a payments table or invoice flow
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -225,7 +228,8 @@ WHERE appointment_status = 'Completed';
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-[https://github.com/jameskins-svg)
+If you'd like to contribute, open an issue or submit a PR to this repository:
+Repository: https://github.com/jameskins-svg/Data-Tools-Final-Project
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
