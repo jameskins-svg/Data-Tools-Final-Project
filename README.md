@@ -73,74 +73,86 @@ To run this project, you need:
 - To create the table, you will need a schema as shown below:
 
 ```sql
--- Drop old tables if they exist
-DROP TABLE IF EXISTS orders CASCADE;
-DROP TABLE IF EXISTS customers CASCADE;
-DROP TABLE IF EXISTS books CASCADE;
-DROP TABLE IF EXISTS authors CASCADE;
-
--- Create authors table
-CREATE TABLE authors (
-  id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL,
-  country TEXT
+-- Create Patients table
+CREATE TABLE Patients (
+    patient_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    date_of_birth DATE,
+    gender VARCHAR(10),
+    contact_info VARCHAR(100)
 );
+<img width="1920" height="901" alt="image" src="https://github.com/user-attachments/assets/9e5c22ea-532f-4158-8496-f649fdb4984a" />
 
--- Create books table
-CREATE TABLE books (
-  id SERIAL PRIMARY KEY,
-  title TEXT NOT NULL,
-  author_id INT REFERENCES authors(id),
-  price NUMERIC(8,2),
-  in_stock BOOLEAN DEFAULT true
+-- Create Doctors table
+CREATE TABLE Doctors (
+    doctor_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    specialty VARCHAR(50),
+    contact_info VARCHAR(100)
 );
+<img width="1920" height="893" alt="image" src="https://github.com/user-attachments/assets/044da67f-729c-4552-8d32-0db17c7cf462" />
 
--- Create customers table
-CREATE TABLE customers (
-  id SERIAL PRIMARY KEY,
-  full_name TEXT NOT NULL,
-  email TEXT UNIQUE NOT NULL
+-- Create Appointments table
+CREATE TABLE Appointments (
+    appointment_id SERIAL PRIMARY KEY,
+    patient_id INT REFERENCES Patients(patient_id),
+    doctor_id INT REFERENCES Doctors(doctor_id),
+    appointment_date DATE,
+    appointment_time TIME,
+    reason_for_visit VARCHAR(255)
 );
+<img width="1920" height="889" alt="image" src="https://github.com/user-attachments/assets/b4a21f9b-8460-47b0-98ea-30de4352c0ee" />
 
--- Create orders table
-CREATE TABLE orders (
-  id SERIAL PRIMARY KEY,
-  customer_id INT REFERENCES customers(id),
-  book_id INT REFERENCES books(id),
-  order_date TIMESTAMP DEFAULT now()
+-- Create Treatments table
+CREATE TABLE Treatments (
+    treatment_id SERIAL PRIMARY KEY,
+    appointment_id INT REFERENCES Appointments(appointment_id),
+    treatment_description VARCHAR(255),
+    treatment_date DATE,
+    treatment_cost DECIMAL(10, 2)
 );
+<img width="1920" height="892" alt="image" src="https://github.com/user-attachments/assets/33ba5073-0427-4ce2-bbc0-df8958fdc31d" />
 
--- Insert sample authors (5 rows)
-INSERT INTO authors (name, country) VALUES
-  ('Chinua Achebe', 'Nigeria'),
-  ('Ngũgĩ wa Thiong\'o', 'Kenya'),
-  ('Wole Soyinka', 'Nigeria'),
-  ('Nadine Gordimer', 'South Africa'),
-  ('Binyavanga Wainaina', 'Kenya');
 
--- Insert sample books (5 rows)
-INSERT INTO books (title, author_id, price, in_stock) VALUES
-  ('Things Fall Apart', 1, 1200.00, true),
-  ('Petals of Blood', 2, 1500.00, true),
-  ('Death and the King\'s Horseman', 3, 1800.00, true),
-  ('July\'s People', 4, 1300.00, false),
-  ('One Day I Will Write About This Place', 5, 1600.00, true);
+-- Insert sample data into Patients table
+INSERT INTO Patients (first_name, last_name, date_of_birth, gender, contact_info) VALUES
+('John', 'Kamau', '1980-01-01', 'Male', '+254-700-123456'),
+('Jane', 'Wanjiku', '1990-02-02', 'Female', '+254-701-234567'),
+('Alice', 'Mwangi', '2000-03-03', 'Female', '+254-702-345678'),
+('Bob', 'Ochieng', '1975-04-04', 'Male', '+254-703-456789'),
+('Charlie', 'Njoroge', '1985-05-05', 'Male', '+254-704-567890');
+<img width="1920" height="901" alt="image" src="https://github.com/user-attachments/assets/949f4cd5-2145-433c-b72c-ad02c418951e" />
 
--- Insert sample customers (5 rows)
-INSERT INTO customers (full_name, email) VALUES
-  ('Joy Phoebe', 'joy@example.com'),
-  ('Brian Otieno', 'brian@example.com'),
-  ('Aisha Ali', 'aisha@example.com'),
-  ('Peter Mwangi', 'peter@example.com'),
-  ('Grace Wanjiku', 'grace@example.com');
+-- Insert sample data into Doctors table
+INSERT INTO Doctors (first_name, last_name, specialty, contact_info) VALUES
+('Dr. Emily', 'Mutua', 'Cardiology', '+254-705-678901'),
+('Dr. Michael', 'Odhiambo', 'Neurology', '+254-706-789012'),
+('Dr. Sarah', 'Kariuki', 'Pediatrics', '+254-707-890123'),
+('Dr. David', 'Waweru', 'Orthopedics', '+254-708-901234'),
+('Dr. Laura', 'Kiptoo', 'Dermatology', '+254-709-012345');
+<img width="1920" height="896" alt="image" src="https://github.com/user-attachments/assets/f7d8bf61-4548-4565-b720-e68458078b75" />
 
--- Insert sample orders (5 rows)
-INSERT INTO orders (customer_id, book_id) VALUES
-  (1, 1),
-  (1, 2),
-  (2, 3),
-  (3, 4),
-  (4, 5);
+-- Insert sample data into Appointments table
+INSERT INTO Appointments (patient_id, doctor_id, appointment_date, appointment_time, reason_for_visit) VALUES
+(1, 1, '2025-10-01', '09:00:00', 'Routine Checkup'),
+(2, 2, '2025-10-02', '10:00:00', 'Headache'),
+(3, 3, '2025-10-03', '11:00:00', 'Fever'),
+(4, 4, '2025-10-04', '12:00:00', 'Back Pain'),
+(5, 5, '2025-10-05', '13:00:00', 'Skin Rash');
+<img width="1920" height="892" alt="image" src="https://github.com/user-attachments/assets/ac65003a-d1e9-48b2-8d46-388d62aca0b8" />
+
+-- Insert sample data into Treatments table
+INSERT INTO Treatments (appointment_id, treatment_description, treatment_date, treatment_cost) VALUES
+(1, 'Blood Test', '2025-10-01', 100.00),
+(2, 'MRI Scan', '2025-10-02', 500.00),
+(3, 'Medication', '2025-10-03', 50.00),
+(4, 'Physical Therapy', '2025-10-04', 200.00),
+(5, 'Skin Biopsy', '2025-10-05', 150.00);
+<img width="1920" height="894" alt="image" src="https://github.com/user-attachments/assets/c4ba0cc7-973f-4d4d-94a5-961ce5a92e0a" />
+
+
 ```
 
 - The Tables should look like this in Supabase:
