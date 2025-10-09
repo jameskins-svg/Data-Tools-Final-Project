@@ -188,17 +188,20 @@ Treatments:
 - To test the table, I used two queries: 
 
 ```sql
-SELECT * FROM orders
-WHERE name = "Nadine Gordimer"
+SELECT * FROM Appointments
+WHERE patient_id = 'P001';
 ````
 
 ```sql
-SELECT * FROM books
-WHERE in_stock = "TRUE"
+SELECT * FROM Appointments
+WHERE appointment_status = 'Completed';
 ````
 
 - Here are the results of the queries:
-<img width="1460" height="791" alt="image" src="https://github.com/user-attachments/assets/37cf0a4e-ca92-4d8d-8888-2cca0165d32b" />
+<img width="1920" height="893" alt="image" src="https://github.com/user-attachments/assets/16dca65b-fe67-438b-a8eb-c1b10636b878" />
+
+<img width="1920" height="886" alt="image" src="https://github.com/user-attachments/assets/a7dd4d80-f463-4627-a85f-f77cfcd3397f" />
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -206,11 +209,9 @@ WHERE in_stock = "TRUE"
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Joy Phoebe**
+👤 **James Mwai**
 
-- GitHub: [@joyapisi](https://github.com/joyapisi)
-- Twitter: [@joyphoebe300](https://twitter.com/joyphoebe300)
-- LinkedIn: [@joyapisi](https://linkedin.com/in/joyapisi)
+- GitHub: [https://github.com/jameskins-svg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
