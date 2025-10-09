@@ -171,19 +171,19 @@ INSERT INTO Treatments (treatment_id, appointment_id, treatment_description, tre
 - The Tables look like this in Supabase:
 
 Patients:
-<img width="1920" height="905" alt="image" src="https://github.com/user-attachments/assets/f90960cc-c47c-4e9c-b4ba-0b6553497783" />
+<img width="1920" height="895" alt="image" src="https://github.com/user-attachments/assets/ae7cc756-9cb7-4b20-8254-77de6651a7ad" />
 
 Doctors:
-<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/2827c35b-ec59-4631-85e0-13aa35a55464" />
+<img width="1920" height="895" alt="image" src="https://github.com/user-attachments/assets/94fb553c-a604-4437-bbb1-c74ebcfd53aa" />
 
 Appointments:
-<img width="1920" height="896" alt="image" src="https://github.com/user-attachments/assets/36e47500-fb0f-47b7-b5d9-71fa18488165" />
+<img width="1920" height="895" alt="image" src="https://github.com/user-attachments/assets/ce120764-fdbc-4b0c-8210-fe70b45f8c7d" />
 
 Treatments:
 <img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/c3741e19-4990-4265-8b18-2e5be89b0019" />
 
 - The ERD screenshot from Supabase looks like this: 
-<img width="1064" height="577" alt="image" src="https://github.com/user-attachments/assets/4b8a39b1-ff20-4bd3-be6f-f662b35ae49f" />
+<img width="1918" height="891" alt="image" src="https://github.com/user-attachments/assets/99718701-55ff-43e5-a266-ed27872ef9c7" />
 
 - To test the table, I used two queries: 
 
