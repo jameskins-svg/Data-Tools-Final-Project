@@ -1,7 +1,6 @@
 # Data-Tools-Final-Project
 
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
   <img width="314" height="285" alt="image" src="https://github.com/jameskins-svg/hello_world/blob/main/image_2025-09-30_111733297.png" />
   <br/>
 
@@ -69,9 +68,8 @@ To run this project, you need:
 
 ### DB Schema
 
-- The DB is made up of 3 tables. Eaach table has 5 entries.
+- The DB is made up of 4 tables.
 - To create the table, you will need a schema as shown below:
-
 ```sql
 -- Create Patients table
 CREATE TABLE Patients (
