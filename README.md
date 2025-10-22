@@ -65,6 +65,11 @@ To run this project, you need:
 - A Supabase account: https://supabase.com/
 - Basic SQL knowledge
 
+### Setup
+
+Copy the contents of this Readme.md to your Project's file
+ 
+```
 
 ### DB Schema
 
