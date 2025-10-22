@@ -1,30 +1,6 @@
 # Data-Tools-Final-Project
-Data tools final exam
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-
-OPTIONAL SECTIONS:
-- FAQ
-
-After you're finished please remove all the comments and instructions!
--->
 
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
   <img width="314" height="285" alt="image" src="https://github.com/jameskins-svg/hello_world/blob/main/image_2025-09-30_111733297.png" />
   <br/>
 
@@ -32,109 +8,204 @@ After you're finished please remove all the comments and instructions!
 
 </div>
 
+# Hospital SQL Project
+
+<a name="readme-top"></a>
+
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Run tests](#run-tests)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
-- [📝 License](#license)
+- [My SQL Project](#about-project)
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 My SQL Project](#about-project)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 My SQL Project <a name="about-project"></a>
 
-> Describe your project in 1 or 2 sentences.
+**Hospital SQL Project** 
+A demo hospital database built with PostgreSQL (Supabase).  
+This repo contains the schema (tables + sample data) used to practice database fundamentals, relationships and SQL queries.
 
-**[Data-Tools-Final-Project]** is a...
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
-
-> Describe the tech stack and include only the relevant sections that apply to your project e.g SQL.
-
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://reactjs.org/">Supabase</a></li>
-  </ul>
-</details>
-
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://expressjs.com/">SQL</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-  </ul>
-</details>
+- SQL (Postgres Supabase)
+- Postgres DB
 
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
-
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- Tables for Patients, Doctors, Appointments and Treatments
+- Sample data (10 rows per table)
+- Foreign key relationships (Appointments → Patients, Doctors; Treatments → Appointments)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-
-To get a local copy up and running, follow these steps.
+To rebuild this DB, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:
+To run this project, you need:
+- A Supabase account: https://supabase.com/
+- Basic SQL knowledge
+
 ### Setup
 
-Clone this repository to your desired folder:
+Copy the contents of this Readme.md to your Project's file
+ 
+### DB Schema
 
-<!--
-Example commands:
+- The DB is made up of 4 tables.
+- Paste the SQL below into the **SQL editor** in your Supabase project and run it.
 
-```sh
-  cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+
+```sql
+-- Create Patients table
+CREATE TABLE Patients (
+    patient_id VARCHAR(10) PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    date_of_birth DATE,
+    gender VARCHAR(10),
+    contact_info VARCHAR(100)
+);
+
+-- Create Doctors table
+CREATE TABLE Doctors (
+    doctor_id VARCHAR(10) PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    specialty VARCHAR(50),
+    contact_info VARCHAR(100)
+);
+
+-- Create Appointments table
+CREATE TABLE Appointments (
+    appointment_id VARCHAR(10) PRIMARY KEY,
+    patient_id VARCHAR(10) REFERENCES Patients(patient_id),
+    doctor_id VARCHAR(10) REFERENCES Doctors(doctor_id),
+    appointment_date DATE,
+    appointment_time TIME,
+    reason_for_visit VARCHAR(255),
+    appointment_status VARCHAR(50) -- Column to indicate the status of the appointment
+);
+
+-- Create Treatments table
+CREATE TABLE Treatments (
+    treatment_id VARCHAR(10) PRIMARY KEY,
+    appointment_id VARCHAR(10) REFERENCES Appointments(appointment_id),
+    treatment_description VARCHAR(255),
+    treatment_date DATE,
+    treatment_cost DECIMAL(10, 2)
+);
+
+
+-- Insert sample data into Patients table
+INSERT INTO Patients (patient_id, first_name, last_name, date_of_birth, gender, contact_info) VALUES
+('P001', 'John', 'Kamau', '1980-01-15', 'Male', '0798532678'),
+('P002', 'Jane', 'Wanjiku', '1990-02-25', 'Female', '0720867589'),
+('P003', 'Alice', 'Mwangi', '2000-03-10', 'Female', '0739236490'),
+('P004', 'Bob', 'Otieno', '1975-04-05', 'Male', '074377901'),
+('P005', 'Charlie', 'Njoroge', '1985-05-20', 'Male', '0755566012'),
+('P006', 'Grace', 'Achieng', '1995-06-30', 'Female', '0763324563'),
+('P007', 'Peter', 'Kariuki', '1988-07-25', 'Male', '0778426334'),
+('P008', 'Joy', 'Mutua', '1992-08-15', 'Female', '07833578345'),
+('P009', 'Brian', 'Omondi', '1982-09-10', 'Male', '07901006456'),
+('P010', 'Aisha', 'Ali', '1998-10-05', 'Female', '0701481167');
+
+
+-- Insert sample data into Doctors table
+INSERT INTO Doctors (doctor_id, first_name, last_name, specialty, contact_info) VALUES
+('D001', 'Dr. Emily', 'Wangari', 'Cardiology', '0717384678'),
+('D002', 'Dr. Michael', 'Oluoch', 'Neurology', '0711956789'),
+('D003', 'Dr. Sarah', 'Kilonzo', 'Pediatrics', '0796357890'),
+('D004', 'Dr. David', 'Mutiso', 'Orthopedics', '0745046901'),
+('D005', 'Dr. Laura', 'Kariuki', 'Dermatology', '0754672512'),
+('D006', 'Dr. James', 'Mwangi', 'General Surgery', '0765096423'),
+('D007', 'Dr. Anne', 'Ndungu', 'Gynecology', '0711468534'),
+('D008', 'Dr. Peter', 'Omondi', 'ENT', '0785499845');
+
+
+-- Insert sample data into Appointments table
+INSERT INTO Appointments (appointment_id, patient_id, doctor_id, appointment_date, appointment_time, reason_for_visit, appointment_status) VALUES
+('A001', 'P001', 'D001', '2025-09-01', '09:00:00', 'Routine Checkup', 'Completed'),
+('A002', 'P002', 'D002', '2025-09-15', '10:00:00', 'Headache', 'Completed'),
+('A003', 'P003', 'D003', '2025-09-20', '11:00:00', 'Fever', 'Missed'),
+('A004', 'P004', 'D004', '2025-09-25', '12:00:00', 'Back Pain', 'Pending'),
+('A005', 'P005', 'D005', '2025-09-30', '13:00:00', 'Skin Rash', 'Completed'),
+('A006', 'P006', 'D006', '2025-10-05', '14:00:00', 'Stomach Ache', 'Pending'),
+('A007', 'P007', 'D007', '2025-10-10', '15:00:00', 'Pregnancy Checkup', 'Pending'),
+('A008', 'P008', 'D008', '2025-10-15', '16:00:00', 'Ear Infection', 'Pending'),
+('A009', 'P009', 'D001', '2025-10-20', '17:00:00', 'Chest Pain', 'Pending'),
+('A010', 'P010', 'D002', '2025-10-25', '18:00:00', 'Migraine', 'Pending');
+
+
+-- Insert sample data into Treatments table
+INSERT INTO Treatments (treatment_id, appointment_id, treatment_description, treatment_date, treatment_cost) VALUES
+('T001', 'A001', 'Blood Test', '2025-09-01', 1000.00),
+('T002', 'A002', 'MRI Scan', '2025-09-15', 5000.00),
+('T003', 'A003', 'Medication', '2025-09-20', 500.00),
+('T004', 'A004', 'Physical Therapy', '2025-09-25', 2000.00),
+('T005', 'A005', 'Skin Biopsy', '2025-09-30', 1500.00),
+('T006', 'A006', 'Endoscopy', '2025-10-05', 3000.00),
+('T007', 'A007', 'Ultrasound', '2025-10-10', 2500.00),
+('T008', 'A008', 'Ear Cleaning', '2025-10-15', 800.00),
+('T009', 'A009', 'ECG', '2025-10-20', 1200.00),
+('T010', 'A010', 'CT Scan', '2025-10-25', 4000.00);
+
 ```
---->
 
-### Run tests
+- The Tables look like this in Supabase:
 
-To run tests, run the following command:
+Patients:
+<img width="1920" height="895" alt="image" src="https://github.com/user-attachments/assets/ae7cc756-9cb7-4b20-8254-77de6651a7ad" />
 
-<!--
-Example command:
-<!--
-Example:
+Doctors:
+<img width="1920" height="895" alt="image" src="https://github.com/user-attachments/assets/94fb553c-a604-4437-bbb1-c74ebcfd53aa" />
 
-```sh
+Appointments:
+<img width="1920" height="895" alt="image" src="https://github.com/user-attachments/assets/ce120764-fdbc-4b0c-8210-fe70b45f8c7d" />
 
-```
- -->
+Treatments:
+<img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/c3741e19-4990-4265-8b18-2e5be89b0019" />
+
+- The ERD screenshot from Supabase looks like this: 
+<img width="1125" height="677" alt="image" src="https://github.com/user-attachments/assets/1dc5f3ba-65ef-4b64-bdd6-7bc87284c1ff" />
+
+
+- To test the table, I used two queries: 
+
+```sql
+SELECT * FROM Appointments
+WHERE patient_id = 'P001';
+````
+
+```sql
+SELECT * FROM Appointments
+WHERE appointment_status = 'Completed';
+````
+
+- Here are the results of the queries:
+<img width="1920" height="893" alt="image" src="https://github.com/user-attachments/assets/16dca65b-fe67-438b-a8eb-c1b10636b878" />
+
+<img width="1920" height="886" alt="image" src="https://github.com/user-attachments/assets/a7dd4d80-f463-4627-a85f-f77cfcd3397f" />
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -142,19 +213,9 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
+👤 **James Mwai**
 
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [https://github.com/jameskins-svg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -162,11 +223,9 @@ Example:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- Add security (RLS / Supabase Auth)
+- Link DB to R for visualizations and analysis
+- Add a payments table or invoice flow
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -174,42 +233,9 @@ Example:
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
+If you'd like to contribute, open an issue or submit a PR to this repository:
+Repository: https://github.com/jameskins-svg/Data-Tools-Final-Project
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
-
-## ⭐️ Show your support <a name="support"></a>
-
-> Write a message to encourage readers to support your project
-
-If you like this project...
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-> Give credit to everyone who inspired your codebase.
-
-I would like to thank...
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-## ❓ FAQ (OPTIONAL) <a name="faq"></a>
-
-> Add at least 2 questions new developers would ask when they decide to use your project.
-
-- **[Question_1]**
-
-  - [Answer_1]
-
-- **[Question_2]**
-
-  - [Answer_2]
