@@ -86,4 +86,3 @@ SELECT * FROM Appointments
 WHERE patient_id = 'P001';
 SELECT * FROM Appointments
 WHERE appointment_status = 'Completed';
-```
