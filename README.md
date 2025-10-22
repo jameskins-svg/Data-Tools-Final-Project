@@ -69,12 +69,12 @@ To run this project, you need:
 
 Copy the contents of this Readme.md to your Project's file
  
-```
-
 ### DB Schema
 
 - The DB is made up of 4 tables.
 - Paste the SQL below into the **SQL editor** in your Supabase project and run it.
+
+
 ```sql
 -- Create Patients table
 CREATE TABLE Patients (
